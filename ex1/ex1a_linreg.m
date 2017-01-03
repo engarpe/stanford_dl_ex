@@ -37,15 +37,19 @@ n=size(train.X,1);
 % Initialize the coefficient vector theta to random values.
 theta = rand(n,1);
 
+%% Check gradient
+grad_check(@linear_regression_vec, theta, round(n/4), train.X, train.y);
+grad_check(@linear_regression, theta, round(n/4), train.X, train.y);
+
 % Run the minFunc optimizer with linear_regression.m as the objective.
 %
 % TODO:  Implement the linear regression objective and gradient computations
 % in linear_regression.m
 %
-tic;
-options = struct('MaxIter', 200);
-theta = minFunc(@linear_regression, theta, options, train.X, train.y);
-fprintf('Optimization took %f seconds.\n', toc);
+%tic;
+%options = struct('MaxIter', 200);
+%theta = minFunc(@linear_regression, theta, options, train.X, train.y);
+%fprintf('Optimization took %f seconds.\n', toc);
 
 % Run minFunc with linear_regression_vec.m as the objective.
 %
@@ -74,7 +78,6 @@ actual_prices = test.y;
 predicted_prices = theta'*test.X;
 test_rms=sqrt(mean((predicted_prices - actual_prices).^2));
 fprintf('RMS testing error: %f\n', test_rms);
-
 
 % Plot predictions on test data.
 plot_prices=true;

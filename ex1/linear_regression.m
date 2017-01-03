@@ -27,3 +27,14 @@ for i = 1 : m
   f = f + (((theta' * X(:,i)) -  y(i)) ** 2) / 2;
   g = g + ( X(:,i) * ((theta' * X(:,i)) - y(i)));
 end
+
+
+%% Own implemented code to check gradients
+%epsilon = 10^-4
+%e_check=zeros(size(theta));
+
+%for i = 1 : n
+%  e_vec=zeros(size(theta));
+%  e_vec(i) = 1
+%  e_check(i) = ((sum(((theta+epsilon*e_vec)' * X - y).**2))/2 - (sum(((theta-epsilon*e_vec)' * X - y).**2))/2)/(2*epsilon)
+%end

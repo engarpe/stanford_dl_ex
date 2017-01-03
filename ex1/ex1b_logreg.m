@@ -25,13 +25,18 @@ options = struct('MaxIter', 100);
 % First, we initialize theta to some small random values.
 theta = rand(n,1)*0.001;
 
+%% Check gradient
+grad_check(@logistic_regression, theta, round(n/4), train.X, train.y);
+grad_check(@logistic_regression_vec, theta, round(n/4), train.X, train.y);
+
+
 % Call minFunc with the logistic_regression.m file as the objective function.
 %
 % TODO:  Implement batch logistic regression in the logistic_regression.m file!
 %
-tic;
-theta=minFunc(@logistic_regression, theta, options, train.X, train.y);
-fprintf('Optimization took %f seconds.\n', toc);
+%tic;
+%theta=minFunc(@logistic_regression, theta, options, train.X, train.y);
+%fprintf('Optimization took %f seconds.\n', toc);
 
 % Now, call minFunc again with logistic_regression_vec.m as objective.
 %
